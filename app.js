@@ -37,12 +37,22 @@ app.post('/api/save', (req, res) => {
     res.send('post')
 })
 
-app.post('/api/getData', (req, res) => {
-    Data.findOne({ key: req.body.key }, (err, getDate) => {
+app.get('/api/getDataNoId', (req, res) => {
+    Data.findOne({ key: 3 }, (err, getData) => {
         if (err) console.log(err)
         else {
-            console.log(getDate)
-            res.json(getDate)
+            console.log(getData)
+            res.json(getData)
+        }
+    })
+})
+
+app.post('/api/getData', (req, res) => {
+    Data.findOne({ key: req.body.key }, (err, getData) => {
+        if (err) console.log(err)
+        else {
+            console.log(getData)
+            res.json(getData)
         }
     })
 })
