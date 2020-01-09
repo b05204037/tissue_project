@@ -48,7 +48,7 @@ app.get('/api/getDataNoId', (req, res) => {
 })
 
 app.post('/api/getData', (req, res) => {
-    Data.findOne({ key: req.body.key }, (err, getData) => {
+    Data.findOne({ key: req.body.key }, { sort: { 'created_at': -1 } }, (err, getData) => {
         if (err) console.log(err)
         else {
             console.log(getData)
