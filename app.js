@@ -37,6 +37,16 @@ app.post('/api/save', (req, res) => {
     res.send('post')
 })
 
+app.post('/api/getData', (req, res) => {
+    Data.findOne({ key: req.body.key }, (err, getDate) => {
+        if (err) console.log(err)
+        else {
+            console.log(getDate)
+            res.json(getDate)
+        }
+    })
+})
+
 const port = process.env.PORT || 5000
 app.listen(port, () => {
     console.log(`connect to ${port}`)
